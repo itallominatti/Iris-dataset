@@ -84,7 +84,5 @@ if __name__ == '__main__':
     iris_regression.train_model()
     iris_regression.predict()
     iris_regression.evaluate()
-
-    create_iris_dataset_plot('./excel/iris.csv')
-
     unittest.main()
+    create_iris_dataset_plot('./excel/iris.csv')
