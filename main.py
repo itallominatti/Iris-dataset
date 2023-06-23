@@ -5,7 +5,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_squared_error
 import matplotlib.pyplot as plt
-
+import pickle
 
 class IrisLinearRegression:
     def __init__(self, data_path):
@@ -31,6 +31,15 @@ class IrisLinearRegression:
     def evaluate(self):
         mse = mean_squared_error(self.y_test, self.y_pred)
         return mse
+
+    def save_model(self, file_path):
+        with open(file_path, 'wb') as file:
+            pickle.dump(self.model, file)
+
+    def load_model(self, file_path):
+        with open(file_path, 'rb') as file:
+            self.model = pickle.load(file)
+
 
 def create_iris_dataset_plot(data_path):
     iris_data = pd.read_csv(data_path)
@@ -84,5 +93,8 @@ if __name__ == '__main__':
     iris_regression.train_model()
     iris_regression.predict()
     iris_regression.evaluate()
-    unittest.main()
-    create_iris_dataset_plot('./excel/iris.csv')
+
+    iris_regression.save_model('modelo.pkl')
+    iris_regression.load_model('modelo.pkl')
+
+    
