@@ -93,7 +93,7 @@ if __name__ == '__main__':
     iris_regression.train_model()
     iris_regression.predict()
     iris_regression.evaluate()
-
+    create_iris_dataset_plot('./excel/iris.csv')
     iris_regression.save_model('modelo.pkl')
     iris_regression.load_model('modelo.pkl')
 
